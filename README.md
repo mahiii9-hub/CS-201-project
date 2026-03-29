@@ -1,2 +1,13 @@
-# CS-201-project
-This repository contains my CS201 final project developed in C++. It demonstrates the application of programming fundamentals including functions, control structures, and modular design.
+Cpp-PROGRESSIVE-PROJECTS
+
+This repository contains my progressive C++ projects for the CS201 course.
+The projects demonstrate core programming concepts and will be updated as I continue working on them.
+
+Status
+
+🚧 In Progress
+
+Author
+
+Malaika Aiman
+
