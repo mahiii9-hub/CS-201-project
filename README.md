@@ -18,7 +18,9 @@ Welcome to my  C++  practice and projects repository! This repo showcases the pr
 ## 🔗 Practice Questions
 I have also maintained a separate repository for practice questions and exercises to reinforce my learning:  
 [Practice Questions Repository](https://github.com/mahiii9-hub/CodeWithMalaika.git)
-Author
 
-Malaika Aiman
+
+Author
+MAHI!
+
 
