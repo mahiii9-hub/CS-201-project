@@ -5,7 +5,7 @@
 
 using namespace std;
 
-// User ka basic structure
+// Basic account structure to hold user data
 struct Account {
     int accNo;
     string name;
@@ -14,21 +14,21 @@ struct Account {
     vector<string> history;
 };
 
-// Global list aur starting ID
+// Global list of accounts and starting ID
 vector<Account> accounts;
 int nextId = 1001;
 
-// Specific account find karne ka function
+// Helper function to find account index by account number
 int findAccount(int accNo) {
     for (size_t i = 0; i < accounts.size(); i++) {
         if (accounts[i].accNo == accNo) {
-            return i;
+            return i; // Account found
         }
     }
-    return -1; // Not found
+    return -1; // Account not found
 }
 
-// 1. Naya Account Banana
+// 1. Create a new bank account
 void createAccount() {
     Account acc;
     acc.accNo = nextId++;
@@ -44,17 +44,17 @@ void createAccount() {
     cin >> acc.balance;
 
     if (acc.balance < 0) {
-        cout << "Error: Amount negative nahi ho sakti!\n";
+        cout << "Error: Initial balance cannot be negative!\n";
         return;
     }
 
     acc.history.push_back("Account opened with Rs. " + to_string(acc.balance));
     accounts.push_back(acc);
 
-    cout << "-> Account created successfully! Your Account Number is: " << acc.accNo << "\n";
+    cout << "-> Account created! Your Account Number is: " << acc.accNo << "\n";
 }
 
-// 2. Paise Jama Karna
+// 2. Deposit money into an account
 void deposit() {
     int accNo;
     double amount;
@@ -64,7 +64,7 @@ void deposit() {
 
     int idx = findAccount(accNo);
     if (idx == -1) {
-        cout << "Account nahi mila!\n";
+        cout << "Error: Account not found!\n";
         return;
     }
 
@@ -72,16 +72,16 @@ void deposit() {
     cin >> amount;
 
     if (amount <= 0) {
-        cout << "Invalid Amount!\n";
+        cout << "Error: Deposit amount must be positive!\n";
         return;
     }
 
     accounts[idx].balance += amount;
     accounts[idx].history.push_back("Deposited: Rs. " + to_string(amount));
-    cout << "-> Deposit successful! New Balance: Rs. " << fixed << setprecision(2) << accounts[idx].balance << "\n";
+    cout << "-> Deposit successful! Updated Balance: Rs. " << fixed << setprecision(2) << accounts[idx].balance << "\n";
 }
 
-// 3. Paise Nikalna
+// 3. Withdraw money from an account
 void withdraw() {
     int accNo;
     double amount;
@@ -91,7 +91,7 @@ void withdraw() {
 
     int idx = findAccount(accNo);
     if (idx == -1) {
-        cout << "Account nahi mila!\n";
+        cout << "Error: Account not found!\n";
         return;
     }
 
@@ -99,7 +99,7 @@ void withdraw() {
     cin >> amount;
 
     if (amount <= 0 || amount > accounts[idx].balance) {
-        cout << "Error: Invalid amount ya balance kam hai.\n";
+        cout << "Error: Invalid amount or insufficient balance.\n";
         return;
     }
 
@@ -108,7 +108,7 @@ void withdraw() {
     cout << "-> Withdrawal successful! Remaining Balance: Rs. " << fixed << setprecision(2) << accounts[idx].balance << "\n";
 }
 
-// 4. Account Info Dikhana
+// 4. View specific account details
 void showDetails() {
     int accNo;
     cout << "Enter Account Number: ";
@@ -116,7 +116,7 @@ void showDetails() {
 
     int idx = findAccount(accNo);
     if (idx == -1) {
-        cout << "Account nahi mila!\n";
+        cout << "Error: Account not found!\n";
         return;
     }
 
@@ -128,10 +128,10 @@ void showDetails() {
     cout << "-----------------------------\n";
 }
 
-// 5. Tamam Accounts Display Karna
+// 5. Display list of all registered accounts
 void showAll() {
     if (accounts.empty()) {
-        cout << "Filhal koi accounts nahi hain.\n";
+        cout << "No accounts registered yet.\n";
         return;
     }
 
@@ -142,7 +142,7 @@ void showAll() {
     cout << "====================================\n";
 }
 
-// 6. History Print Karna
+// 6. View full transaction statement for an account
 void showHistory() {
     int accNo;
     cout << "Enter Account Number: ";
@@ -150,7 +150,7 @@ void showHistory() {
 
     int idx = findAccount(accNo);
     if (idx == -1) {
-        cout << "Account nahi mila!\n";
+        cout << "Error: Account not found!\n";
         return;
     }
 
@@ -160,11 +160,12 @@ void showHistory() {
     }
 }
 
+// Main execution menu loop
 int main() {
     int choice;
 
     while (true) {
-        cout << "\n--- TRUSTLINE BANKING MENU ---\n";
+        cout << "\n--- TRUSTLINE BANKING SYSTEM ---\n";
         cout << "1. Create Account\n";
         cout << "2. Deposit Money\n";
         cout << "3. Withdraw Money\n";
@@ -183,10 +184,10 @@ int main() {
             case 5: showAll(); break;
             case 6: showHistory(); break;
             case 0: 
-                cout << "Program closed. Khuda Hafiz!\n";
+                cout << "Exiting system. Goodbye!\n";
                 return 0;
             default: 
-                cout << "Ghalat option select kia hai, dobara try karein.\n";
+                cout << "Invalid choice! Please try again.\n";
         }
     }
 
