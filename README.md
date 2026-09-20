@@ -21,6 +21,8 @@ Welcome to my C++ practice and projects repository! This repo showcases the C++ 
 * Practical implementations of functions, modular code design, and real-world logic.
 * **Projects Completed:**
   * **Bank Management System** (`Bank-Management.cpp`) – A feature-rich console application managing account creation, deposits, withdrawals, and balance tracking.
+* **Student Management System** (`Student-Management.cpp`) – A feature-rich console application managing student enrollment, record updates, grade calculation, and database viewing.
+* **Library Management System** (`Library-Management.cpp`) – A feature-rich console application managing book issuance, returns, inventory tracking, and member records.
 
 ---
 
